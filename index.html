@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#171a18">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Panel Run">
+<title>TRAKWAY: Panel Run</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main id="app">
+  <section id="console" aria-label="Trakway Panel Run game console">
+    <header class="brandbar">
+      <div class="sunbelt"><span class="sun">☀</span><strong>SUNBELT</strong><small>RENTALS · TRAKWAY</small></div>
+      <div class="game-title"><span>TRAKWAY</span><strong>PANEL RUN</strong></div>
+      <button id="menuBtn" class="small-key" aria-label="Game menu">☰</button>
+    </header>
+
+    <section class="screen-shell">
+      <div class="lcd-head">
+        <div><small>SHIFT</small><b id="clock">07:00</b></div>
+        <div><small>SCORE</small><b id="score">000000</b></div>
+        <div><small>PANELS</small><b id="panels">12/30</b></div>
+        <div><small>SAFE ×</small><b id="mult">1</b></div>
+      </div>
+      <canvas id="game" width="360" height="520" aria-label="Top-down reversing Trakway panel game"></canvas>
+      <div class="hud-row">
+        <div class="meter"><span>TRACTION</span><i><b id="slipBar"></b></i></div>
+        <div class="meter"><span>VEHICLE</span><i><b id="damageBar"></b></i></div>
+        <div class="load"><span>CLEAN</span><b id="cleanCount">12</b><span>DIRTY</span><b id="dirtyCount">0</b></div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Game controls">
+      <div class="dpad" aria-label="Move left or right">
+        <button id="leftBtn" aria-label="Move left">◀</button>
+        <button id="rightBtn" aria-label="Move right">▶</button>
+      </div>
+      <button id="lockBtn" class="lock-btn" aria-pressed="false"><span>⚡</span><b>LOCK OFF</b><small>GS6 EVENT</small></button>
+      <button id="actionBtn" class="action-btn"><span>CLAMP</span><b>GRAB / LAY</b><small>TIME THE LIFT</small></button>
+    </section>
+    <div class="speaker" aria-hidden="true">••••••••••••••</div>
+  </section>
+
+  <section id="overlay" class="overlay open" aria-live="polite">
+    <div class="panel start-panel">
+      <div class="badge">SUNBELT RENTALS · TRAKWAY</div>
+      <h1>TRAKWAY<br><span>PANEL RUN</span></h1>
+      <p class="tag">BUILD THE ROUTE. HOLD THE LINE. FINISH THE SHIFT.</p>
+      <div class="truck-card" aria-hidden="true">
+        <svg viewBox="0 0 220 190" role="img" aria-label="Cartoon plan view of rear-mounted Trakway lorry loader">
+          <g stroke="#111" stroke-width="5" stroke-linejoin="round">
+            <rect x="74" y="106" width="72" height="65" rx="15" fill="#71be44"/>
+            <path d="M82 137h56v26H82z" fill="#9be064"/>
+            <rect x="79" y="148" width="62" height="15" rx="4" fill="#24332e"/>
+            <rect x="70" y="49" width="80" height="69" rx="8" fill="#4b5550"/>
+            <rect x="78" y="59" width="64" height="10" fill="#b9bdb7"/>
+            <rect x="78" y="73" width="64" height="10" fill="#8f9691"/>
+            <rect x="78" y="87" width="64" height="10" fill="#b9bdb7"/>
+            <rect x="64" y="31" width="92" height="20" rx="5" fill="#1d2723"/>
+            <circle cx="110" cy="42" r="12" fill="#315a38"/>
+            <path d="M110 41L92 22 78 29 95 48M111 42l23-19 10 9-21 19" fill="none" stroke="#315a38" stroke-width="10" stroke-linecap="round"/>
+            <path d="M57 39h106M61 33v18M159 33v18" fill="none" stroke="#202622" stroke-width="7"/>
+            <circle cx="61" cy="39" r="7" fill="#d3bf89"/><circle cx="159" cy="39" r="7" fill="#d3bf89"/>
+            <rect x="40" y="67" width="26" height="19" rx="5" fill="#181b1a"/><rect x="154" y="67" width="26" height="19" rx="5" fill="#181b1a"/>
+            <rect x="40" y="101" width="26" height="19" rx="5" fill="#181b1a"/><rect x="154" y="101" width="26" height="19" rx="5" fill="#181b1a"/>
+          </g>
+          <text x="110" y="128" text-anchor="middle" font-family="Arial Black" font-size="12" fill="#111">SUNBELT</text>
+          <text x="110" y="143" text-anchor="middle" font-family="Arial Black" font-size="9" fill="#111">TRAKWAY</text>
+        </svg>
+      </div>
+      <p class="brief">Reverse the installation unit along the route. Collect usable panels, bridge missing sections, avoid unsuitable ground and keep the work area safe as the shift clock accelerates.</p>
+      <button id="startBtn" class="primary">START SHIFT</button>
+      <button id="howBtn" class="secondary">HOW TO PLAY</button>
+      <p class="warning"><strong>GAME / AWARENESS USE ONLY.</strong> Speeds, timings, distances, crane movements and controls are deliberately stylised. They do not represent real Trakway operations and must not be recreated on site. Real work must follow the current job pack, approved method statement, DRA, training, site controls and Responsible Person instructions.</p>
+    </div>
+  </section>
+
+  <div id="toast" class="toast" hidden></div>
+</main>
+<script src="./game.js"></script>
+</body>
+</html>
