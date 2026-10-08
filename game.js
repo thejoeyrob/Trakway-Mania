@@ -5,7 +5,7 @@ const canvas=$('game'),ctx=canvas.getContext('2d');
 const W=343,H=418;
 const laneX=[62,171.5,281], laneW=74, rowH=92, truckY=270, workY=160;
 const truck=new Image(),panelImg=new Image(),cleanStack=new Image(),dirtyStack=new Image();
-truck.src='./assets/truck.svg';panelImg.src='./assets/panel.svg';cleanStack.src='./assets/stack-clean.svg';dirtyStack.src='./assets/stack-dirty.svg';
+truck.src='./truck.svg';panelImg.src='./panel.svg';cleanStack.src='./stack-clean.svg';dirtyStack.src='./stack-dirty.svg';
 const tips=[
  'Keep people clear of the lifting operation and load path.',
  'Ground conditions can change during a shift. Reassess before continuing.',

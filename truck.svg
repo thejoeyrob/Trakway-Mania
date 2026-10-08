@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 340">
+<defs>
+ <linearGradient id="cab" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#68e53e"/><stop offset=".55" stop-color="#35b72b"/><stop offset="1" stop-color="#197e20"/></linearGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#d9ddd5"/><stop offset=".3" stop-color="#8d9894"/><stop offset=".55" stop-color="#f0f0e8"/><stop offset="1" stop-color="#727d79"/></linearGradient>
+ <filter id="shadow"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-opacity=".45"/></filter>
+</defs>
+<g filter="url(#shadow)">
+ <rect x="34" y="44" width="82" height="235" rx="13" fill="#1b2221" stroke="#0b0e0d" stroke-width="5"/>
+ <!-- wheels -->
+ <g fill="#111" stroke="#2c3433" stroke-width="3">
+  <rect x="19" y="87" width="23" height="45" rx="7"/><rect x="108" y="87" width="23" height="45" rx="7"/>
+  <rect x="19" y="154" width="23" height="45" rx="7"/><rect x="108" y="154" width="23" height="45" rx="7"/>
+  <rect x="19" y="218" width="23" height="45" rx="7"/><rect x="108" y="218" width="23" height="45" rx="7"/>
+ </g>
+ <!-- flat bed -->
+ <rect x="43" y="96" width="64" height="149" rx="5" fill="#36413e" stroke="#0b0f0e" stroke-width="4"/>
+ <!-- panel stack -->
+ <g>
+  <rect x="48" y="108" width="54" height="116" rx="4" fill="#cdd1c8" stroke="#444d49" stroke-width="3"/>
+  <g stroke="#6a7470" stroke-width="3"><path d="M51 118h48M51 136h48M51 154h48M51 172h48M51 190h48M51 208h48"/></g>
+  <g stroke="#f4f0dc" stroke-width="1.5"><path d="M53 124h44M53 142h44M53 160h44M53 178h44M53 196h44M53 214h44"/></g>
+ </g>
+ <!-- rear crane base at working end -->
+ <rect x="27" y="56" width="96" height="27" rx="5" fill="#151c1a" stroke="#0a0d0c" stroke-width="3"/>
+ <g stroke="#1c4b2e" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <path d="M52 62 L72 37 L89 57 L112 33"/>
+ </g>
+ <g stroke="#58d35a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <path d="M52 62 L72 37 L89 57 L112 33"/>
+ </g>
+ <circle cx="52" cy="62" r="11" fill="#267b37" stroke="#0c311a" stroke-width="4"/><circle cx="89" cy="57" r="8" fill="#267b37" stroke="#0c311a" stroke-width="3"/>
+ <!-- hazard stripes -->
+ <path d="M27 83h96v12H27z" fill="#f5c400"/><path d="M28 94l14-11h12L40 94zm30 0l14-11h12L70 94zm30 0l14-11h12l-14 11z" fill="#111"/>
+ <!-- cab -->
+ <path d="M35 246 Q35 232 48 228 H102 Q115 232 115 246 V313 Q115 328 100 333 H50 Q35 328 35 313Z" fill="url(#cab)" stroke="#0c2914" stroke-width="5"/>
+ <path d="M43 252h64l-8 32H51z" fill="#19323a" stroke="#9fd0c8" stroke-width="2"/>
+ <path d="M51 255h19v26H48zm29 0h19l3 26H80z" fill="#234c57" opacity=".9"/>
+ <rect x="46" y="290" width="58" height="25" rx="4" fill="#4ade31" stroke="#1c771f" stroke-width="2"/>
+ <g fill="#ff9d24" stroke="#6d3a00" stroke-width="2"><circle cx="49" cy="238" r="5"/><circle cx="101" cy="238" r="5"/></g>
+ <g fill="#f3f0d5"><rect x="42" y="316" width="16" height="6" rx="2"/><rect x="92" y="316" width="16" height="6" rx="2"/></g>
+ <!-- Sunbelt style mark -->
+ <g transform="translate(75 300)"><circle r="5" fill="#ffe000"/><g stroke="#ffe000" stroke-width="3"><path d="M0-13v6M0 7v6M-13 0h6M7 0h6M-9-9l4 4M5 5l4 4M9-9L5-5M-5 5l-4 4"/></g></g>
+ <!-- mirrors --> <rect x="27" y="264" width="8" height="18" rx="3" fill="#202827"/><rect x="115" y="264" width="8" height="18" rx="3" fill="#202827"/>
+</g>
+</svg>

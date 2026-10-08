@@ -1,12 +1,19 @@
-TRAKWAY TRAIL — FLAT PWA
+TRAKWAY TRAIL v2.0.1 — TRUE FLAT PWA
 
-Upload every file in this ZIP directly to the HTTPS website root. There is no build command.
+This package contains NO subfolders.
+Upload every file directly to the HTTPS web root.
 
-This is a GAME / SAFETY-AWARENESS experience. Vehicle speed, timing, distances, crane movements and gameplay mechanics are deliberately stylised and do not represent actual Trakway operations. Do not recreate game actions on site. Real work must follow the current approved job pack, method statement, DRA, lift plan, site controls and Responsible Person instructions.
+Required root files include:
+index.html
+styles.css
+game.js
+sw.js
+manifest.webmanifest
+truck.svg
+panel.svg
+stack-clean.svg
+stack-dirty.svg
+sunbelt-sun.png
+icons
 
-Core controls:
-LEFT / RIGHT — lane change at hardstanding crossovers.
-GRAB / LAY — timed panel pickup or deployment.
-LOCK OFF — awareness control used for the GS6/OHL game event.
-
-The visual truck is a top-down cartoon interpretation of a Trakway rigid with panel load and a rear-mounted lorry-loader crane at the working end.
+Do not create an assets folder. All references are root-relative within this flat package.
