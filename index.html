@@ -1,40 +1,76 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#0b1410"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Trakway Trail">
-<title>Trakway Trail</title><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png"><link rel="icon" href="./icon-192.png"><link rel="stylesheet" href="./styles.css">
-</head><body>
-<div id="app">
-  <div class="topbar">
-    <div class="brand"><img src="./sunbelt-sun.png" alt=""><div><b>TRAKWAY</b><span>TRAIL</span><small>SUNBELT RENTALS · TRAKWAY</small></div></div>
-    <button id="menuBtn" class="iconBtn" aria-label="Menu">☰</button>
-  </div>
-  <div class="hud">
-    <div><small>SHIFT</small><b id="shift">07:00</b></div>
-    <div><small>SCORE</small><b id="score">000000</b></div>
-    <div><small>PANELS</small><b id="panels">12/30</b></div>
-    <div><small>SAFE ×</small><b id="mult">1</b></div>
-  </div>
-  <div class="stage"><canvas id="game" width="343" height="418" aria-label="Trakway Trail game"></canvas><div id="toast"></div><button id="lockBtn" class="lockBtn" hidden>🔒 LOCK OFF</button></div>
-  <div class="status">
-    <div class="meter"><label>TRACTION</label><span><i id="tractionBar"></i></span></div>
-    <div class="meter"><label>VEHICLE</label><span><i id="vehicleBar"></i></span></div>
-    <div class="count"><small>CLEAN</small><b id="clean">12</b></div><div class="count dirty"><small>DIRTY</small><b id="dirty">0</b></div>
-  </div>
-  <div class="controls">
-    <button id="leftBtn" class="roundBtn side">◀</button>
-    <button id="actionBtn" class="roundBtn action"><span>⚙</span><b>GRAB / LAY</b></button>
-    <button id="rightBtn" class="roundBtn side">▶</button>
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#111814">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ground Shift">
+<meta name="description" content="A Trakway-inspired retro safety awareness arcade game.">
+<title>TRAKWAY: Ground Shift</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" href="./icon-192.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="fit">
+<main id="app" aria-label="Trakway Ground Shift game">
+  <header class="header">
+    <div class="brand"><span class="sun">✦</span><div><small>SUNBELT RENTALS · TRAKWAY</small><b>GROUND <em>SHIFT</em></b></div></div>
+    <button id="menuBtn" class="menu" aria-label="Pause and menu">☰</button>
+  </header>
 
-  <div id="home" class="overlay home">
-    <div class="heroArt"><img src="./truck.svg" alt="Cartoon Trakway lorry"></div>
-    <div class="logoLockup"><img src="./sunbelt-sun.png" alt=""><h1>TRAKWAY<br><em>TRAIL</em></h1><p>BUILD THE ROAD. HOLD THE LINE.</p></div>
-    <button class="primary" data-action="play">START SHIFT</button>
-    <button class="secondary" data-action="how">HOW TO PLAY</button>
-    <button class="secondary" data-action="scores">HIGH SCORES</button>
-    <div class="disclaimer"><b>⚠ GAME / AWARENESS USE ONLY</b><br>Vehicle speed, timing, distances, crane movements and gameplay are deliberately stylised and do not represent actual Trakway operations. Do not recreate game actions on site. Real work must follow the current job pack, method statement, DRA, lift plan, site controls and Responsible Person instructions.</div>
-  </div>
+  <section class="hud" aria-label="Game status">
+    <div><small>SHIFT</small><b id="clock">07:00</b></div>
+    <div class="score"><small>SCORE</small><b id="score">000000</b></div>
+    <div><small>PANELS</small><b id="stock">12/30</b></div>
+    <div><small>SAFE</small><b id="mult">×1</b></div>
+  </section>
 
-  <div id="panel" class="overlay panel" hidden><div class="panelHead"><h2 id="panelTitle">MENU</h2><button id="closePanel">×</button></div><div id="panelBody" class="panelBody"></div></div>
+  <section class="screenWrap">
+    <canvas id="game" width="351" height="378" aria-label="Top-down Trakway installation arcade game"></canvas>
+    <div class="scan" aria-hidden="true"></div>
+    <div id="sectorBadge" class="sectorBadge"><small>SECTOR 1</small><b>COMPOUND START</b></div>
+    <div id="callout" class="callout" aria-live="polite"></div>
+    <button id="lockBtn" class="lockBtn" hidden><span>⚡</span><b>LOCK OFF</b><small>GAME CONTROL</small></button>
+  </section>
+
+  <section class="telemetry">
+    <div class="bar"><span>TRACTION</span><i><b id="traction"></b></i></div>
+    <div class="bar"><span>VEHICLE</span><i><b id="vehicle"></b></i></div>
+    <div class="split"><span>CLEAN <b id="clean">12</b></span><span>DIRTY <b id="dirty">0</b></span></div>
+  </section>
+
+  <section class="controls" aria-label="Game controls">
+    <div class="rocker" aria-label="Move lanes">
+      <button id="leftBtn" aria-label="Move left">◀</button>
+      <button id="rightBtn" aria-label="Move right">▶</button>
+    </div>
+    <div class="actionZone">
+      <div id="actionHint" class="actionHint">ALIGN · GRAB · LAY</div>
+      <button id="actionBtn" class="action" aria-label="Grab or lay panel"><span class="clampIcon">⌁</span><b>GRAB / LAY</b></button>
+    </div>
+  </section>
+  <div class="footerNote">GAME / AWARENESS USE ONLY · NOT A REPRESENTATION OF REAL WORKING SPEEDS OR PROCEDURES</div>
+
+  <section id="home" class="overlay home">
+    <div class="hero">
+      <canvas id="heroCanvas" width="330" height="170" aria-label="Cartoon Trakway lorry illustration"></canvas>
+      <div class="title"><small>TRAKWAY</small><h1>GROUND<br><em>SHIFT</em></h1><p>BUILD THE WAY · KEEP THE SHIFT MOVING</p></div>
+    </div>
+    <button class="primary" data-act="start">START SHIFT</button>
+    <div class="homeGrid"><button data-act="how">HOW TO PLAY</button><button data-act="scores">HIGH SCORES</button></div>
+    <div class="notice"><b>⚠ ARCADE / AWARENESS GAME</b><p>Vehicle speed, timing, distances, crane movements and controls are deliberately stylised. Do not recreate game actions on site. Real work follows the current job pack, approved method statement, DRA, lift plan, site controls and Responsible Person instructions.</p></div>
+  </section>
+
+  <section id="modal" class="overlay modal" hidden>
+    <header><h2 id="modalTitle">PAUSED</h2><button id="modalClose" aria-label="Close">×</button></header>
+    <div id="modalBody" class="modalBody"></div>
+  </section>
+</main>
 </div>
-<script src="./game.js"></script></body></html>
+<script src="./game.js"></script>
+</body>
+</html>
