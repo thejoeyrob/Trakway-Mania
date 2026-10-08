@@ -1,76 +1,42 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#111814">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Ground Shift">
-<meta name="description" content="A Trakway-inspired retro safety awareness arcade game.">
-<title>TRAKWAY: Ground Shift</title>
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" href="./icon-192.png">
-<link rel="icon" href="./icon-192.png">
-<link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-<div id="fit">
-<main id="app" aria-label="Trakway Ground Shift game">
-  <header class="header">
-    <div class="brand"><span class="sun">✦</span><div><small>SUNBELT RENTALS · TRAKWAY</small><b>GROUND <em>SHIFT</em></b></div></div>
-    <button id="menuBtn" class="menu" aria-label="Pause and menu">☰</button>
-  </header>
-
-  <section class="hud" aria-label="Game status">
-    <div><small>SHIFT</small><b id="clock">07:00</b></div>
-    <div class="score"><small>SCORE</small><b id="score">000000</b></div>
-    <div><small>PANELS</small><b id="stock">12/30</b></div>
-    <div><small>SAFE</small><b id="mult">×1</b></div>
-  </section>
-
-  <section class="screenWrap">
-    <canvas id="game" width="351" height="378" aria-label="Top-down Trakway installation arcade game"></canvas>
-    <div class="scan" aria-hidden="true"></div>
-    <div id="sectorBadge" class="sectorBadge"><small>SECTOR 1</small><b>COMPOUND START</b></div>
-    <div id="callout" class="callout" aria-live="polite"></div>
-    <button id="lockBtn" class="lockBtn" hidden><span>⚡</span><b>LOCK OFF</b><small>GAME CONTROL</small></button>
-  </section>
-
-  <section class="telemetry">
-    <div class="bar"><span>TRACTION</span><i><b id="traction"></b></i></div>
-    <div class="bar"><span>VEHICLE</span><i><b id="vehicle"></b></i></div>
-    <div class="split"><span>CLEAN <b id="clean">12</b></span><span>DIRTY <b id="dirty">0</b></span></div>
-  </section>
-
-  <section class="controls" aria-label="Game controls">
-    <div class="rocker" aria-label="Move lanes">
-      <button id="leftBtn" aria-label="Move left">◀</button>
-      <button id="rightBtn" aria-label="Move right">▶</button>
-    </div>
-    <div class="actionZone">
-      <div id="actionHint" class="actionHint">ALIGN · GRAB · LAY</div>
-      <button id="actionBtn" class="action" aria-label="Grab or lay panel"><span class="clampIcon">⌁</span><b>GRAB / LAY</b></button>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#101817"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Ground Shift">
+<title>TRAKWAY: GROUND SHIFT</title><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><link rel="stylesheet" href="styles.css">
+</head><body>
+<div id="app">
+  <section id="menu" class="screen active">
+    <img class="cover" src="cover.jpg" alt="TRAKWAY Ground Shift cartoon cover">
+    <div class="menuShade"></div>
+    <div class="menuButtons">
+      <button class="primary" id="playBtn">▶ PLAY SHIFT</button>
+      <button id="howBtn">▣ HOW TO PLAY</button>
+      <button id="scoresBtn">★ HIGH SCORES</button>
+      <button id="settingsBtn">⚙ SETTINGS</button>
+      <div class="disclaimer"><b>GAME / AWARENESS USE ONLY</b><br>Speeds, timings, distances and crane actions are stylised game mechanics. They do not represent real operations and must not be recreated on site. Follow the current approved job pack, lift plan, DRA and site controls.</div>
     </div>
   </section>
-  <div class="footerNote">GAME / AWARENESS USE ONLY · NOT A REPRESENTATION OF REAL WORKING SPEEDS OR PROCEDURES</div>
-
-  <section id="home" class="overlay home">
-    <div class="hero">
-      <canvas id="heroCanvas" width="330" height="170" aria-label="Cartoon Trakway lorry illustration"></canvas>
-      <div class="title"><small>TRAKWAY</small><h1>GROUND<br><em>SHIFT</em></h1><p>BUILD THE WAY · KEEP THE SHIFT MOVING</p></div>
+  <section id="game" class="screen">
+    <header class="hud">
+      <button id="pauseBtn" class="iconBtn">Ⅱ</button>
+      <div><small>SHIFT</small><b id="timeHud">07:00</b></div>
+      <div><small>PANELS</small><b id="panelHud">18/30</b><em id="stockHud">C 18 · D 0</em></div>
+      <div><small>SCORE</small><b id="scoreHud">000000</b><em id="multiHud">SAFE ×1</em></div>
+    </header>
+    <div id="worldWrap">
+      <canvas id="world" width="390" height="575"></canvas>
+      <div id="banner" class="banner hidden"></div>
+      <div id="warning" class="warning hidden"></div>
+      <div id="lockPanel" class="lockPanel hidden"><b>GS6 / OHL CONTROL</b><button id="lockBtn">🔒 LOCK OFF</button><span id="lockState">NOT ACTIVE</span></div>
     </div>
-    <button class="primary" data-act="start">START SHIFT</button>
-    <div class="homeGrid"><button data-act="how">HOW TO PLAY</button><button data-act="scores">HIGH SCORES</button></div>
-    <div class="notice"><b>⚠ ARCADE / AWARENESS GAME</b><p>Vehicle speed, timing, distances, crane movements and controls are deliberately stylised. Do not recreate game actions on site. Real work follows the current job pack, approved method statement, DRA, lift plan, site controls and Responsible Person instructions.</p></div>
+    <div class="meters"><span>TRACTION</span><i><b id="tractionBar"></b></i><span>VEHICLE</span><i><b id="vehicleBar"></b></i></div>
+    <div class="controls">
+      <button id="leftBtn" class="moveBtn">◀</button>
+      <button id="actionBtn" class="actionBtn"><span>GRAB / LAY</span><small id="actionHint">TIME THE CRANE</small></button>
+      <button id="rightBtn" class="moveBtn">▶</button>
+    </div>
   </section>
-
-  <section id="modal" class="overlay modal" hidden>
-    <header><h2 id="modalTitle">PAUSED</h2><button id="modalClose" aria-label="Close">×</button></header>
-    <div id="modalBody" class="modalBody"></div>
-  </section>
-</main>
+  <section id="modal" class="screen modal hidden"><div class="card" id="modalCard"></div></section>
 </div>
-<script src="./game.js"></script>
-</body>
-</html>
+<script src="game.js"></script>
+</body></html>
