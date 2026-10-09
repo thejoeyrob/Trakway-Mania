@@ -1,4 +1,4 @@
-TRAKWAY: GROUND SHIFT v2.0 — TRUE FLAT PWA
+TRAKWAY: GROUND SHIFT v2.1.0 — TRUE FLAT PWA
 
 DEPLOYMENT
 Extract this ZIP and upload every file directly to the HTTPS site root.
@@ -10,3 +10,6 @@ The Trakway unit is shown cab-down / reversing up-screen with the panel load on 
 
 IMPORTANT
 This is a game / safety-awareness activity. Speeds, timings, distances, lifting actions and game controls are deliberately stylised and do not represent real operations. Real work must follow the current job pack, lift plan, DRA, method statement, site controls and instructions from the Responsible Person.
+
+INTERACTION FIX
+The full-screen modal overlay bug from v2.0 has been removed. Menu/game controls are click/tap tested. The service worker cache is versioned to 2.1.0.

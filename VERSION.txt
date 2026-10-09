@@ -1,1 +1,1 @@
-2.0.0-rendered-flat-pwa
+2.1.0-rendered-flat-pwa-interaction-fix
